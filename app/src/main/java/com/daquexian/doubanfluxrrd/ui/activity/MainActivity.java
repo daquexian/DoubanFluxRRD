@@ -1,25 +1,22 @@
-package com.daquexian.doubanfluxrrd;
+package com.daquexian.doubanfluxrrd.ui.activity;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.daquexian.doubanfluxrrd.R;
+import com.daquexian.doubanfluxrrd.RxBus;
 import com.daquexian.doubanfluxrrd.actions.ActionCreator;
 import com.daquexian.doubanfluxrrd.dispatcher.Dispatcher;
 import com.daquexian.doubanfluxrrd.inject.component.AppComponent;
 import com.daquexian.doubanfluxrrd.model.Book;
 import com.daquexian.doubanfluxrrd.model.BookList;
 import com.daquexian.doubanfluxrrd.stores.BookListStore;
-import com.daquexian.doubanfluxrrd.stores.Store;
 import com.daquexian.doubanfluxrrd.ui.adapter.BookListAdapter;
 import com.lapism.searchview.SearchAdapter;
 import com.lapism.searchview.SearchHistoryTable;
@@ -34,8 +31,6 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import in.workarounds.bundler.Bundler;
-import in.workarounds.bundler.annotations.RequireBundler;
-import in.workarounds.bundler.annotations.State;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;

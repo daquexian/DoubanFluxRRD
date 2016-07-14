@@ -1,8 +1,7 @@
 package com.daquexian.doubanfluxrrd.inject.component;
 
-import com.daquexian.doubanfluxrrd.BaseActivity;
 import com.daquexian.doubanfluxrrd.DoubanApp;
-import com.daquexian.doubanfluxrrd.MainActivity;
+import com.daquexian.doubanfluxrrd.ui.activity.MainActivity;
 import com.daquexian.doubanfluxrrd.actions.ActionCreator;
 import com.daquexian.doubanfluxrrd.inject.module.FluxModule;
 import com.daquexian.doubanfluxrrd.inject.module.RetrofitModule;

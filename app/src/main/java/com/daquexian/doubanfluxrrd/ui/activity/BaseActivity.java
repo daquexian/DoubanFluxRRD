@@ -1,4 +1,4 @@
-package com.daquexian.doubanfluxrrd;
+package com.daquexian.doubanfluxrrd.ui.activity;
 
 import android.app.Activity;
 import android.os.Bundle;

@@ -1,20 +1,15 @@
-package com.daquexian.doubanfluxrrd;
+package com.daquexian.doubanfluxrrd.ui.activity;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.BottomSheetBehavior;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.daquexian.doubanfluxrrd.inject.component.AppComponent;
+import com.daquexian.doubanfluxrrd.R;
 import com.daquexian.doubanfluxrrd.model.Book;
-import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
