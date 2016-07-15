@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 /**
  * Created by jianhao on 16-7-13.
+ * 与获取图书列表相关的Action
  */
 public class BookListAction extends Action{
     public static final String ACTION_GET_BOOK_LIST_START = "action_get_book_list_start";

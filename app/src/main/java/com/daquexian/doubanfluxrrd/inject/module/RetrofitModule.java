@@ -12,6 +12,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Created by jianhao on 16-7-13.
+ * 用于Dagger2，提供与Retrofit相关的组件
  */
 @Module
 public class RetrofitModule {

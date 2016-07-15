@@ -80,10 +80,14 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.BookLi
         return new BookListVH(LayoutInflater.from(mContext).inflate(R.layout.book_item, parent, false));
     }
 
+    /**
+     * 对外界提供的监听器接口
+     */
     public interface onItemClickListener{
         void onItemClick(int position);
         void onItemLongClick(int position);
     }
+
     public static class BookListVH extends RecyclerView.ViewHolder{
         @BindView(R.id.book_rl)
         RelativeLayout bookRl;

@@ -35,10 +35,13 @@ import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 
-public class MainActivity extends BaseActivity {
-    final static String TAG = "MainActivity";
+public class BookListActivity extends BaseActivity {
+    final static String TAG = "BookListActivity";
     final Context mContext = this;
 
+    /**
+     * 使用Dagger2初始化BookListStore
+     */
     @Inject
     public BookListStore bookListStore;
     BookListAdapter mBookListAdapter;
@@ -52,10 +55,13 @@ public class MainActivity extends BaseActivity {
 
     Subscription mBookListSubscription;
     Subscription mEnterDetailSubscription;
-    public BookListStore getBookListStore() {
-        return bookListStore;
-    }
 
+    /**
+     * 初始化，包括
+     * 在RxBus（用于Store分发Action）和Dispatcher上注册
+     * bookListRv的配置
+     * SearchView的初始化
+     */
     private void init(){
         mBookListSubscription = RxBus.getDefault().toObservable(BookListStore.BookListChangeEvent.class)
                 .observeOn(AndroidSchedulers.mainThread())
@@ -91,9 +97,12 @@ public class MainActivity extends BaseActivity {
         });
         bookListRv.setAdapter(mBookListAdapter);
 
-
         initSearchView();
     }
+
+    /** SearchView的配置
+     *  基本照搬了GitHub主页上的实例的代码
+     */
     protected void initSearchView() {
         mHistoryDatabase = new SearchHistoryTable(this);
 
@@ -111,7 +120,6 @@ public class MainActivity extends BaseActivity {
             public boolean onQueryTextSubmit(String query) {
                 getData(query, 0);
                 searchView.close(true);
-                // mSearchView.close(false);
                 return true;
             }
 
@@ -131,22 +139,31 @@ public class MainActivity extends BaseActivity {
                 String query = textView.getText().toString();
                 getData(query, position);
                 searchView.close(true);
-                // mSearchView.close(false);
             }
         });
         searchView.setAdapter(searchAdapter);
     }
+
+    /**
+     * 从搜索框搜索时调用
+     * @param text 搜索的关键字
+     * @param position 由SearchView的SearchItem点击事件开始搜索时表示SearchItem的position，暂时无用
+     */
     private void getData(String text, int position) {
         mHistoryDatabase.addItem(new SearchItem(text));
         ActionCreator.getInstance(Dispatcher.getInstance()).getBookList(text);
+    }
+
+    public BookListStore getBookListStore() {
+        return bookListStore;
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
 
+        ButterKnife.bind(this);
         AppComponent.Instance.getInstance().inject(this);
 
         init();
@@ -154,6 +171,10 @@ public class MainActivity extends BaseActivity {
         ActionCreator.getInstance(Dispatcher.getInstance()).getBookList("Android");
     }
 
+    /**
+     * 刷新UI
+     * 没有实现Loading和Error时的UI变化 ：）
+     */
     private void render(){
         if(getBookListStore().isFinish()){
             BookList bookList = getBookListStore().getBookList();
@@ -168,22 +189,17 @@ public class MainActivity extends BaseActivity {
         }
     }
 
+    /**
+     * 使用Bundler在Activity间跳转、传递变量
+     * @param book 需要展示详情的书籍
+     */
     private void enterDetail(Book book){
         Bundler.bookDetailActivity(book).start(this);
     }
 
-    //@Override
-    //protected void onSaveInstanceState(Bundle outState) {
-    //    super.onSaveInstanceState(outState);
-    //    Bundler.saveState(this, outState);
-    //}
-
-    /*@Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-        Bundler.restoreState(this, savedInstanceState);
-    }*/
-
+    /**
+     * 十分重要，否则会导致一个Action被收到多次
+     */
     @Override
     protected void onDestroy() {
         super.onDestroy();

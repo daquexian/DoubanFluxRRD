@@ -11,6 +11,7 @@ import java.util.List;
 
 /**
  * Created by jianhao on 16-7-13.
+ * Flux中的Dispatcher
  */
 public class Dispatcher {
     private final List<Store> mStoreList = new ArrayList<>();

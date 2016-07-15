@@ -9,6 +9,7 @@ import rx.subjects.Subject;
 
 /**
  * Created by jianhao on 16-7-13.
+ * 使用RxJava实现的事件总线
  */
 public class RxBus {
     private static volatile RxBus mDefaultInstance;

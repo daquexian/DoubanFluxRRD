@@ -20,9 +20,13 @@ import in.workarounds.bundler.annotations.State;
 
 /**
  * Created by jianhao on 16-7-14.
+ * 图书详情的Activity
  */
 @RequireBundler
 public class BookDetailActivity extends BaseActivity {
+    /**
+     * 使用Bundler从Bundle中提取变量
+     */
     @Arg
     @State
     Book book;

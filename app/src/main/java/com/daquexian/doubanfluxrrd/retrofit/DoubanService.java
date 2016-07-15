@@ -11,6 +11,7 @@ import rx.Observable;
 
 /**
  * Created by jianhao on 16-7-12.
+ * 用于Retrofit，根据豆瓣提供的API执行网络请求
  */
 public interface DoubanService {
     @GET("book/search")

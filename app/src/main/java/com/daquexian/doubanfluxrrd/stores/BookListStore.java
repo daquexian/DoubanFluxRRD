@@ -11,6 +11,7 @@ import com.daquexian.doubanfluxrrd.model.BookList;
 
 /**
  * Created by jianhao on 16-7-13.
+ * 起到保存UI信息和状态并根据收到的Action更新的作用，对应于BookListActivity，大部分代码都是实现Parcelable的
  */
 public class BookListStore extends Store implements Parcelable {
     private BookList mBookList;

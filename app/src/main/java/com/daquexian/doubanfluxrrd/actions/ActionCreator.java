@@ -17,6 +17,7 @@ import rx.schedulers.Schedulers;
 
 /**
  * Created by jianhao on 16-7-13.
+ * Flux中的ActionCreator
  */
 public class ActionCreator {
     private final static String TAG = "ActionCreator";

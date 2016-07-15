@@ -1,7 +1,7 @@
 package com.daquexian.doubanfluxrrd.inject.component;
 
 import com.daquexian.doubanfluxrrd.DoubanApp;
-import com.daquexian.doubanfluxrrd.ui.activity.MainActivity;
+import com.daquexian.doubanfluxrrd.ui.activity.BookListActivity;
 import com.daquexian.doubanfluxrrd.actions.ActionCreator;
 import com.daquexian.doubanfluxrrd.inject.module.FluxModule;
 import com.daquexian.doubanfluxrrd.inject.module.RetrofitModule;
@@ -12,13 +12,14 @@ import dagger.Component;
 
 /**
  * Created by jianhao on 16-7-13.
+ * Dagger2中的Component
  */
 @Singleton
 @Component(modules = {FluxModule.class, RetrofitModule.class})
 public interface AppComponent {
     void inject(DoubanApp app);
 
-    void inject(MainActivity activity);
+    void inject(BookListActivity activity);
 
     void inject(ActionCreator actionCreator);
 

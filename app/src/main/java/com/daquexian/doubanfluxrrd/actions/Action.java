@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 /**
  * Created by jianhao on 16-7-13.
+ * Flux中的Action
  */
 public abstract class Action {
     private String type;
